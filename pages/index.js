@@ -20,6 +20,7 @@ import Layout from '../components/layouts/article'
 import Paragraph from '../components/paragraph'
 import Section from '../components/section'
 import config from "../config/config";
+import axios from "axios";
 
 const ProfileImage = chakra(Image, {
     shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
@@ -27,9 +28,9 @@ const ProfileImage = chakra(Image, {
 
 /** @returns {Promise<import("../types").IDiscordUser|null>} */
 const GetDiscordUser = async () => {
-    const res = await fetch(`https://discord.com/api/users/${config.USER_ID}`, {
+    const res = axios.get(`https://discord.com/api/users/${config.USER_ID}`, {
         headers: {
-            Authorization: config.AUTHORIZATION
+            Authorization: `Bot ${process.env.TOKEN}`
         }
     })
     if (res.status !== 200 || !res) return null
