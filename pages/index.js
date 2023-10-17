@@ -27,7 +27,11 @@ const ProfileImage = chakra(Image, {
 
 /** @returns {Promise<import("../types").IDiscordUser|null>} */
 const GetDiscordUser = async () => {
-    const res = await fetch(`https://discord.com/api/users/${config.USER_ID}`)
+    const res = await fetch(`https://discord.com/api/users/${config.USER_ID}`, {
+        headers: {
+            Authorization: config.AUTHORIZATION
+        }
+    })
     if (res.status !== 200 || !res) return null
     return await res.json()
 }
