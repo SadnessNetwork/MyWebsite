@@ -25,7 +25,7 @@ const ProfileImage = chakra(Image, {
     shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
 })
 
-/** @returns {Promise<import("./types").IDiscordUser|null>} */
+/** @returns {Promise<import("../types").IDiscordUser|null>} */
 const GetDiscordUser = async () => {
     const res = await fetch(`https://discord.com/api/users/${config.USER_ID}`)
     if (res.status !== 200 || !res) return null
