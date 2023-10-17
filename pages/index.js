@@ -19,29 +19,10 @@ import {BioSection} from '../components/bio'
 import Layout from '../components/layouts/article'
 import Paragraph from '../components/paragraph'
 import Section from '../components/section'
-import config from "../config/config";
-import axios from "axios";
 
 const ProfileImage = chakra(Image, {
     shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
 })
-
-/** @returns {Promise<import("../types").IDiscordUser|null>} */
-const GetDiscordUser = async () => {
-    const res = axios.get(`https://discord.com/api/users/${config.USER_ID}`, {
-        headers: {
-            Authorization: `Bot ${process.env.TOKEN}`
-        }
-    })
-    if (res.status !== 200 || !res) return null
-    return await res.json()
-}
-
-const GetCDNDiscordAvatar = async () => {
-    const user = await GetDiscordUser()
-    if (!user) return null
-    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar.startsWith('a_') ? `${user.avatar}.gif` : `${user.avatar}.png`}}`
-}
 
 const Home = () => (
     <Layout>
@@ -81,7 +62,7 @@ const Home = () => (
                         overflow="hidden"
                     >
                         <ProfileImage
-                            src={`${GetCDNDiscordAvatar()}`}
+                            src="/avatar.gif"
                             alt="profile image"
                             borderRadius="full"
                             width="100"
