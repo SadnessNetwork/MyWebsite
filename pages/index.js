@@ -98,7 +98,7 @@ const Home = () => (
                                     textAlign: 'center',
                                     marginTop: '10%'
                                 }}
-                                src="https://skillicons.dev/icons?i=rust,ts,nodejs,bash,py,linux,git,github,githubactions,html,css,sass,nextjs,nestjs,mongodb,postman&perline=7"
+                                src="https://skillicons.dev/icons?i=rust,ts,nodejs,bash,py,linux,git,github,githubactions,sass,nextjs,nestjs,mongodb,cs&perline=7"
                                 alt="tech stack"
                             />
                         </a>
